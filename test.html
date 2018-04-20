@@ -1,0 +1,13 @@
+<!doctype html>
+<title>Boxrec - Team 1</title>
+{% if f1>f2 %}
+  <h1>Zet je geld op {{ f1 }}!</h1>
+  <h2>{{ f2 }}</h2>
+  <h2>{{ f3 }}</h2>
+{% elif f2>f1 %}
+  <h1>Zet je geld op {{ f2 }}!</h1>
+  <h2>{{ f1 }}</h2>
+  <h2>{{ f3 }}</h2>
+{% else %}
+  <h1>Gelijk? {{ f3 }}</h1>
+{% endif %}
