@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<title>Match predictions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://ec2-13-59-186-99.us-east-2.compute.amazonaws.com:8080/css/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background-image: url('http://ec2-13-59-186-99.us-east-2.compute.amazonaws.com:8080/images/background.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+</style>
+<body>
+<SCRIPT>
+  function process()
+  {
+  var url="http://ec2-13-59-186-99.us-east-2.compute.amazonaws.com:8080/?boxer_id_l=" + document.getElementById("boxer_id_l").value  + _
+  "&boxer_id_r=" + document.getElementById("boxer_id_r").value;
+  location.href=url;
+  return false;
+  }
+  </SCRIPT>
+  <script>
+      (function() {
+        var boxrectag = document.createElement('script');
+        boxrectag.async = true;
+        boxrectag.type = 'text/javascript';
+        boxrectag.src = 'http://static.boxrec.com/js/widget.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(boxrectag, node);
+      })();
+</script>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    <img src="images/logo.png" width="20%" />
+  </div>
+  <div class="w3-display-topmiddle">
+    <h1 class="w3-jumbo w3-animate-top">WELCOME</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <p class="w3-large w3-center">Ready to make some money?</p>
+  </div>
+  <div class="w3-display-middle">
+    <FORM onsubmit="return process();">
+    <INPUT type="text" name="boxer_id_l" id="boxer_id_l" placeholder="Geef naam bokser 1"/>
+	vs.
+	<INPUT type="text" name="boxer_id_r" id="boxer_id_r" placeholder="Geef naam bokser 2"/><br /><br />
+	<center><INPUT class="button" type="submit" value="Let's make some money" /></center>
+  </FORM>
+  </div>
+  <div class="w3-display-left">
+    <ins data-boxrec='results' data-boxrec-count='5'></ins>
+  </div>
+  <div class="w3-display-right">
+	{% if f0>0 %}
+	<h2>Kans bokser 1: {{ f4 }}</h2>
+	<h2>Kans bokser 2: {{ f5 }}</h2>
+	<h2>Kans gelijkspel: {{ f3 }}</h2>
+{% elif f1>0 %}
+	<h2>wij kennen bokser 1 helaas niet, probeer opnieuw</h2>
+	{% else %}
+	<h2> wij kennen deze bokser 2 helaas niet </h2>
+{% endif %}
+  </div>   
+  <div class="w3-display-bottomleft w3-padding-large">
+    Build by Team 1
+  </div>
+</div>
+
+</body>
+</html>
